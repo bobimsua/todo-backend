@@ -1,0 +1,27 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+input CreateWordInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+type Mutation {
+  createWord(createWordInput: CreateWordInput!): Word!
+  removeWord(id: Int!): Word!
+  updateWord(updateWordInput: UpdateWordInput!): Word!
+}
+
+type Query {
+  word(id: Int!): Word!
+}
+
+input UpdateWordInput {
+  id: Int!
+}
+
+type Word {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
