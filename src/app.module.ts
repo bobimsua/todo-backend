@@ -12,6 +12,7 @@ import { UsersModule } from './users/users.module';
     GraphQLModule.forRoot({
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
       sortSchema: true,
+      context: ({ req }) => ({ req }),
     }),
     WordModule,
     AuthModule,

@@ -1,8 +1,12 @@
+import { UseGuards } from '@nestjs/common';
 import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
 import { WordService } from './word.service';
 import { Word } from './entities/word.entity';
 import { CreateWordInput } from './dto/create-word.input';
 import { UpdateWordInput } from './dto/update-word.input';
+import { CurrentUser } from '../auth/auth.decorator';
+import { GqlJwtAuthGuard } from '../auth/jwt-auth.guard';
+import { User } from '../users/users.service';
 
 @Resolver(() => Word)
 export class WordResolver {
@@ -14,7 +18,9 @@ export class WordResolver {
   }
 
   @Query(() => [Word], { name: 'word' })
-  findAll() {
+  @UseGuards(GqlJwtAuthGuard)
+  findAll(@CurrentUser() user: User) {
+    console.log(user.id);
     return this.wordService.findAll();
   }
 
