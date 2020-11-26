@@ -4,7 +4,7 @@
 
 input CreateWordInput {
   """Example field (placeholder)"""
-  exampleField: Int!
+  name: String!
 }
 
 type Mutation {
@@ -15,6 +15,7 @@ type Mutation {
 
 type Query {
   word(id: Int!): Word!
+  words: [Word!]!
 }
 
 input UpdateWordInput {
@@ -22,6 +23,5 @@ input UpdateWordInput {
 }
 
 type Word {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  name: String!
 }
