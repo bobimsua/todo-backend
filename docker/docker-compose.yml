@@ -1,0 +1,32 @@
+version: '3.5'
+
+services:
+  mongodb:
+    container_name: mongodb
+    build: ./mongodb
+    env_file:
+      - ./mongodb/dev.env
+    ports:
+      - '27017:27017'
+    restart: always
+    networks:
+      mongo_network:
+
+  dom_mongodb_express:
+    container_name: mongodb_express
+    image: mongo-express
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: 'admin'
+      ME_CONFIG_MONGODB_ADMINPASSWORD: '123qwe'
+      ME_CONFIG_MONGODB_SERVER: 'mongodb'
+    ports:
+      - '8081:8081'
+    restart: always
+    depends_on:
+      - mongodb
+    networks:
+      mongo_network:
+
+networks:
+  mongo_network:
+    name: mongo_network

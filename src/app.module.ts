@@ -10,9 +10,7 @@ import { WordsModule } from './words/words.module';
 @Module({
   controllers: [AppController],
   imports: [
-    MongooseModule.forRoot(
-      'mongodb+srv://thanhvd:nUuzzhfvQm7FbOvh@freecluster.xgfne.mongodb.net/todo?retryWrites=true&w=majority',
-    ),
+    MongooseModule.forRoot('mongodb://user:123qwe@localhost:27017/todo'),
     GraphQLModule.forRoot({
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
       sortSchema: true,
