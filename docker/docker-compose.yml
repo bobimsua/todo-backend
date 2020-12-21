@@ -12,7 +12,7 @@ services:
     networks:
       mongo_network:
 
-  dom_mongodb_express:
+  mongodb_express:
     container_name: mongodb_express
     image: mongo-express
     environment:
@@ -20,7 +20,7 @@ services:
       ME_CONFIG_MONGODB_ADMINPASSWORD: '123qwe'
       ME_CONFIG_MONGODB_SERVER: 'mongodb'
     ports:
-      - '8081:8081'
+      - '8989:8081'
     restart: always
     depends_on:
       - mongodb
